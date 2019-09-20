@@ -5,7 +5,7 @@ $(document).ready(function(){
         img: $("#iron").html(),
         attack: rndNum(2, 9),
         defense: rndNum(150, 350),
-        counter: rndNum(5,25),
+        counter: 100,
     },
 
     spider :{
@@ -43,7 +43,7 @@ $(document).ready(function(){
     $(".button").on("click", function(){
         console.log("Steps: " +step);
         
-
+    // Step 1-Choose Hero
         if(step === 0){ 
             console.log("this: " +this);
 
@@ -98,7 +98,7 @@ $(document).ready(function(){
                 };
             }
 
-        // Step 2
+        // Step 2 Choose Enemy
         else if (step===1){
             
             enemy = this.id;
@@ -133,15 +133,30 @@ $(document).ready(function(){
                 };
         }
 
-        else if(step===2){
-            attack();
-        }
+        // Step 3 Attack Phase
+            else if(step===2){
+                attack();
+            }
+
+        // Step Reset
+            else if(step===3){
+                reset();
+            };
+
     });
 
         
 // FUNCTIONS
      function reset(){
-
+     mul=0;
+     user;
+     userA;
+     enemy;
+     enemyA;
+     step = 0;
+     defeated=[];
+     $("#reset").hide();
+     $("#user").empty();
      };
 
      function attack(){
@@ -170,7 +185,7 @@ $(document).ready(function(){
         console.log("User Defense Updated: " +userA.defense);
 
         if(enemyA.defense <= 0){
-            if(defeated.length != 2){
+            if(defeated.length !== 2){
             console.log("stop");
             $("#enemy").empty();
             defeated.push(enemy);
@@ -182,13 +197,16 @@ $(document).ready(function(){
                 $("#enemy").empty();
                 pReset();
                 $("#p1").append("You won!")
+                $("#reset").show();
+                step++;
             }
         }else if(userA.defense <= 0){
             console.log("stop");
             $("#user").empty();
             pReset();
             $("#p1").append("You were defeated!")
-            step=3;
+            $("#reset").show();
+                step++;
             
         }else{
             pReset();
