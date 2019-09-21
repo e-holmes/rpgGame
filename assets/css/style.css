@@ -22,3 +22,9 @@ body{
 #reset{
     display: none;
 }
+
+p{
+    font-size: 75%;
+    text-align: center;
+
+}
