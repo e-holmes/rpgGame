@@ -38,7 +38,7 @@ $(document).ready(function(){
     var defeated=[];
 
 
-    console.log(mul);
+    start();
 
     $(".button").on("click", function(){
         console.log("Steps: " +step);
@@ -148,6 +148,15 @@ $(document).ready(function(){
 
         
 // FUNCTIONS
+
+    function start(){
+        $("#ironH").text("Health: " +supers.iron.defense);
+        $("#spiderH").text("Health: " +supers.spider.defense);
+        $("#flashH").text("Health: " +supers.flash.defense);
+        $("#supergirlH").text("Health: " +supers.supergirl.defense);
+    };
+
+
      function reset(){
      mul=0;
      user;
