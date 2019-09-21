@@ -5,7 +5,7 @@ $(document).ready(function(){
         img: $("#iron").html(),
         attack: rndNum(2, 9),
         defense: rndNum(150, 350),
-        counter: 100,
+        counter: rndNum(5,25),
     },
 
     spider :{
@@ -37,7 +37,7 @@ $(document).ready(function(){
     var step = 0;
     var defeated=[];
 
-    reset();
+
     console.log(mul);
 
     $(".button").on("click", function(){
@@ -127,7 +127,7 @@ $(document).ready(function(){
                     enemyA=supers.supergirl;
                 } 
             // If attack selected
-                else if (enemy === "attack"){
+                else if (enemy === "attack" && step===1){
                     pReset();
                     $("#p1").append("No enemy selected!");
                 };
@@ -140,6 +140,7 @@ $(document).ready(function(){
 
         // Step Reset
             else if(step===3){
+                $("#reset").show();
                 reset();
             };
 
@@ -155,8 +156,8 @@ $(document).ready(function(){
      enemyA;
      step = 0;
      defeated=[];
-     $("#reset").hide();
      $("#user").empty();
+     location.reload();
      };
 
      function attack(){
